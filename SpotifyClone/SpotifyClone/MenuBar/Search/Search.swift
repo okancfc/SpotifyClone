@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct Search: View {
-    
+    @State var showSearchSheet: Bool = false
     @State var cameraIsPressed: Bool = false
     @State var cameraButtonColor: Color = Color.white
     var redGeneres: [String] = ["Klasik","Radyo","Yeni Çıkanlar","Uyku","Podcast","Listeler"]
@@ -46,7 +46,7 @@ struct Search: View {
                 }
                 .padding(.horizontal, 10)
                 Button(action: {
-                    
+                    showSearchSheet.toggle()
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
@@ -65,6 +65,10 @@ struct Search: View {
                         }
                         .padding(.horizontal, 30)
                     }
+                })
+                .fullScreenCover(isPresented: $showSearchSheet, content: {
+                    SearchSheet(showSearchSheet: $showSearchSheet)
+                    
                 })
                 ScrollView(showsIndicators: false) {
 

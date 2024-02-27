@@ -18,6 +18,7 @@ struct Home: View {
                             PopularRadios()
                             ForFansOf()
                     }
+                        .padding(.bottom, 50)
                 }
                 
             }
